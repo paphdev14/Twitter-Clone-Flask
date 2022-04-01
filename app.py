@@ -219,10 +219,10 @@ def show_likes(user_id):
         flash("Access unauhtorize", "danger")
         return redirect("/")
     user = User.query.get_or_404(user_id)
-    return render_template("users/likes.html", user=user, likes=user.likes)
+    return render_template("users/show.html", user=user, messages=user.likes)
 
 
-@app.route('/messages/<int:message_id>/like', methods=['POST'])
+@app.route('/messages/<int:message_id>/add_like', methods=['POST'])
 def add_like(message_id):
     """Toggle a liked message for the currently-logged-in user."""
 
